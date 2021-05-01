@@ -19,6 +19,8 @@ import {UserDetailsComponent} from './modules/user-details/user-details.componen
 import {MatIconModule} from '@angular/material/icon';
 import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpInterceptor} from './helpers/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,9 +45,11 @@ import {RouterModule} from '@angular/router';
     NgxSpinnerModule,
     MatIconModule,
     AppRoutingModule,
-    RouterModule
+    RouterModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
