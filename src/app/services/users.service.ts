@@ -24,15 +24,15 @@ export class UsersService {
   logout = () => {
     this.conrext.next(null);
     localStorage.setItem('user', JSON.stringify({}));
-  };
+  }
 
   users = (): Observable<User[]> => {
     return this.http.get<User[]>(API_LOCAL + 'users');
-  };
+  }
   register = (user: User) => {
     return this.http.post<User>(API_LOCAL + 'register', user);
-  };
+  }
   login = (params: any) => {
     return this.http.post(API_LOCAL + 'login', params);
-  };
+  }
 }
