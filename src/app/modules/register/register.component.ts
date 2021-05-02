@@ -10,11 +10,14 @@ import Swal from 'sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+
   EXP = '^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$';
+
   types = [
     {value: 'CLIENT', viewValue: 'Client'},
     {value: 'COMMERCANT', viewValue: 'Commerçant'}
   ];
+
   group = new FormGroup({
     firstname: new FormControl('', [Validators.required]),
     lastname: new FormControl('', [Validators.required]),
@@ -29,6 +32,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.group.value);
   }
 
   send = () => {
@@ -42,6 +46,6 @@ export class RegisterComponent implements OnInit {
       Swal.fire('ERROR', '', 'error');
     });
 
-  };
+  }
 
 }

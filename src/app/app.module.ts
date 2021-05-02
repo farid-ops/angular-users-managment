@@ -21,6 +21,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {RouterModule} from '@angular/router';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpInterceptor} from './helpers/http.interceptor';
+import {ErrorInterceptor} from './helpers/error.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import {HttpInterceptor} from './helpers/http.interceptor';
     RouterModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
